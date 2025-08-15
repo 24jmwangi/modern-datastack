@@ -48,11 +48,12 @@ jobs:
             pip install --upgrade numpy
             pip install -r requirements.txt
 
-      - name: Write GCP service account key & export env
+      - name: Write GCP service account key
+        env:
+          GOOGLE_APP_CREDENTIALS: ${{ secrets.GCP_SA_KEYS }}
         run: |
-          echo '${{ secrets.GCP_SA_KEYS }}' > $HOME/gcp-key.json
-          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json" >> $GITHUB_ENV
-
+          echo "$GOOGLE_APP_CREDENTIALS" > gcp-key.json
+          
       - name: Wait for Postgres to be ready
         run: |
           for i in {1..30}; do
@@ -95,9 +96,10 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Auth to GCP for Terraform
+        env:
+          GOOGLE_APP_CREDENTIALS: ${{ secrets.GCP_SA_KEYS }}      
         run: |
-          echo '${{ secrets.GCP_SA_KEYS }}' > $HOME/gcp-key.json
-          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json" >> $GITHUB_ENV
+          echo "$GOOGLE_APP_CREDENTIALS" > gcp-key.json
 
       - name: Terraform Init/Apply
         working-directory: terraform

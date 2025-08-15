@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "alien-walker-451918-p8",
+  "private_key_id": "544c9225c5e03dd44bfebc1ecadc206c44501ddf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4FSAJ8GuvoQLl\ncMC/m8metHJoU5zyIpNgY+T23kSQwQGw32o/3fEmHBBaCJj47dmdr+q/oYhz8b5m\nZI8RRnjkUQcNEyGTG3XjidrN4i1rq2hsMyNbZ0IbFAUEEYKIMEQuyDuvNNJbGLxf\ndrtow6g0VfW75pryKf+EbG0SuN4fhpIf7sFxLqNEqsgB5eVNW2+vIXnWkVB4oCcg\n9CsnG7A7dOClvXUQ+RbFAQdB2tMACxL5Uq2leRNDo7PUdLJw77sJpcswCyIxRuP6\nsa3JNjFgXmd8UjOnIO3UbFJ29x1jwQtFLjGKaUBDsOzj0DTDe+Pf0/jycZwU0PoM\nmJXyOpZNAgMBAAECggEABmwiQoaDU0zUS4n8B5NZXPKhvTcRljcTmjzR+7T0gnJh\nazjYPaMyKyi2f1WmdKTjv0cocwghOR5ZjLv8a9dgF2MmUlP1C2tdWRNxsVYvTH7d\n9Uxxctpu6X/wztwHiFXawyEUSAAZSLlbtR7w2e5dm3nWSXh5tnI1qnqX8ZvGkCX0\nJE09m5Hxr3c2vLc1MALQ5GqXJzPIEcyembBqpQr23YLP15XW2h9oC4ci5Vx4o5bj\nd4iuk+S0KdJkcuQ4p77BDkCn0/MaUdjHHsOzypRuElFH2YcEcDOJFXIyb9dPRzBC\nVeX4K5aFB0aR2HDuC9Pkoll3vxbrOPLaKBRs05bgsQKBgQDaSkCA48viXcSxUL2W\nYIDm54/YCHV6O8dlP205E/jJjorhlcgZMfYSt1coNPRBLMEUP+LFG4Mfihfk3wyP\n/I6Erp5pta8uWVKE5H1Bmy4IFq6uXcI+y9mtVkeohNfnHuljlKTUBm4Nh8rrsPVb\nQo48vSK/SF7o2rdiwh5FNqM1lQKBgQDX4hDJ1ppQVbIr+PyndleM1xPV4/LUGfMU\nXK7Sj+e9XUohudb35M4KDPizYrvpilfQ4oKmP8+K+1+Npz0UhOd5+sY1zRtDu9dg\niZnafH373Be3diGQ9mA+T8J8mNxp4iTn4cP4LxfY6GRlSoEAfk3VAzg9dvGxSE+L\nbj2H30i/2QKBgEg/iSffvWx3spEpcwZhfGhwPei3rAI/5Nf67TCWDqLPXeIaC/di\n1NoO+nbhR/KGWIVWO70XRQfcUdo7hNHnOlhp3x6Htqp1f91iLp7XOJ4Ou9QUTiUw\nnSREyUTaawcg8Qg3e3J9ilFKH3xwvlRtK9yokOaUkm0pbsbuDszDr7MdAoGBAK1c\nKMcswnbImm+dXqbL7bp37MHSb2nL/NvZIbqNPTdf9uvmZK5k2uBPUlgbbXM5WROx\nEeGXVH7zJeSG7BHSOGBH9Wu27bIS4f3wAdDmL/VU5Oa6wnG6p8biHfgYeMe+hox/\nS/O9PZU96YE9tyJCSxZHo54YKjaHLvl06Yx2zeDhAoGBAISTvs9t1KRPFiAgXXCl\nesFDB23kmWnbTzOxQBtr6Vm7IO1TBo6WbLyutNDlZtmIkITf09D2m0zQXbbvrEEf\n2hqh1zwFMScfKe00YNPZRUzmXIDa410OkoLwP5sE/D//FPppQG8GTMH8Hefk687z\nI5iHIXdmyoIoLXIqaFq+AtZH\n-----END PRIVATE KEY-----\n",
+  "client_email": "streamlit@alien-walker-451918-p8.iam.gserviceaccount.com",
+  "client_id": "105881784838547245042",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/streamlit%40alien-walker-451918-p8.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

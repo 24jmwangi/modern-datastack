@@ -1,7 +1,7 @@
 variable "project_name" {
   description = "The name of the project"
   type        = string
-  default     = "my-data-pipeline-project"
+  default     = "modern-datastack"
 }
 
 variable "region" {
@@ -10,23 +10,6 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "postgres_db_name" {
-  description = "The name of the PostgreSQL database"
-  type        = string
-  default     = "my_database"
-}
-
-variable "postgres_user" {
-  description = "The username for PostgreSQL"
-  type        = string
-  default     = "db_user"
-}
-
-variable "postgres_password" {
-  description = "The password for PostgreSQL"
-  type        = string
-  sensitive   = true
-}
 
 variable "bigquery_dataset_silver" {
   description = "The name of the BigQuery dataset for silver layer"
@@ -38,4 +21,12 @@ variable "bigquery_dataset_gold" {
   description = "The name of the BigQuery dataset for gold layer"
   type        = string
   default     = "gold_dataset"
+}
+
+variable "project_id" {
+  type = string
+}
+
+variable "region" {
+  type = string
 }
