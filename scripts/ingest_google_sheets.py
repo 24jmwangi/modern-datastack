@@ -1,14 +1,9 @@
-'''
-For local development
-'''
 
 import gspread
-import datetime
 import pandas as pd
 import os
 from sqlalchemy import create_engine
-from dotenv import load_dotenv
-import json
+
 
 
 def connect_to_gsheets():
