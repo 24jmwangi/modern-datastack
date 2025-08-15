@@ -60,6 +60,7 @@ for table_name, df in df2.items():
 print("data ingested successfully")
 
 
+### INCREMENTAL LOADING
 def connect_to_bigquery():
     """Authenticates to BigQuery using a service account key file."""
     credentials = service_account.Credentials.from_service_account_file(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
