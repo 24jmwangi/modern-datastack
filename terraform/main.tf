@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = file("${pathexpand("~")}/gcp-key.json")
+  credentials = file(pathexpand("~/gcp-key.json"))
   project     = var.project_id
   region      = var.region
 }
