@@ -98,10 +98,11 @@ jobs:
       - name: Auth to GCP for Terraform    
         run: |
            echo "${{ secrets.GCP_SA_KEY }}" > gcp-key.json
+           chmod 600 gcp-key.json
       
       - name: Set GOOGLE_APPLICATION_CREDENTIALS
-        run: echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/gcp-key.json" >> $GITHUB_ENV
-             
+        run: echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json" >> $GITHUB_ENV
+
       - name: Terraform Init/Apply
         working-directory: terraform
         run: |

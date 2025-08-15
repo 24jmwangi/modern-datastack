@@ -1,9 +1,3 @@
-variable "project_name" {
-  description = "The name of the project"
-  type        = string
-  default     = "modern-datastack"
-}
-
 variable "region" {
   description = "The region where resources will be created"
   type        = string
