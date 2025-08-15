@@ -3,6 +3,8 @@ import gspread
 import pandas as pd
 import os
 from sqlalchemy import create_engine
+from google.cloud import bigquery
+from google.oauth2 import service_account
 
 
 
@@ -56,4 +58,12 @@ for table_name, df in df2.items():
     print(f" ingested {table_name} into PostgreSQL")
 
 print("data ingested successfully")
+
+
+def connect_to_bigquery():
+    """Authenticates to BigQuery using a service account key file."""
+    credentials = service_account.Credentials.from_service_account_file(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+    bq_client = bigquery.Client(credentials=credentials, project=credentials.project_id)
+    print("connection to bq successful")
+    return bq_client
 
