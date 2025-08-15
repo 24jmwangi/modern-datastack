@@ -7,8 +7,7 @@ from sqlalchemy import create_engine
 
 
 def connect_to_gsheets():
-    key_path = os.path.join(os.environ["HOME"], "gcp-key.json")
-    gc = gspread.service_account(filename=key_path)
+    gc = gspread.service_account(filename="gcp-key.json")
     _sh = gc.open_by_key("1XV31clJBum7yNtZBqF_gD_w-6AFp_8wPtOvyG8HBueM")
     print("=========Connected=========")
     return _sh
