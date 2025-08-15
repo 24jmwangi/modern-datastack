@@ -50,7 +50,10 @@ connection_str = f"postgresql+psycopg2://{PG_USER}:{PG_PASS}@{PG_HOST}:{PG_PORT}
 engine = create_engine(connection_str)
 
 df1.to_sql("tickers", engine, if_exists="replace", index=False)
-# df2.to_sql("history", engine, if_exists="replace", index=False)
 
-print("dataloaded successfully")
-    
+for table_name, df in df2.items():
+    df.to_sql(table_name, engine, index=False, if_exists="replace")  
+    print(f" ingested {table_name} into PostgreSQL")
+
+print("data ingested successfully")
+
