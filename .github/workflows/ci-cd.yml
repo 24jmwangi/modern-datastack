@@ -50,7 +50,7 @@ jobs:
 
       - name: Write GCP service account key
         env:
-          GOOGLE_APP_CREDENTIALS: ${{ secrets.GCP_SA_KEYS }}
+          GOOGLE_APP_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
         run: |
           echo "$GOOGLE_APP_CREDENTIALS" > gcp-key.json
           
@@ -97,7 +97,7 @@ jobs:
 
       - name: Auth to GCP for Terraform
         env:
-          GOOGLE_APP_CREDENTIALS: ${{ secrets.GCP_SA_KEYS }}      
+          GOOGLE_APP_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}      
         run: |
           echo "$GOOGLE_APP_CREDENTIALS" > gcp-key.json
 
