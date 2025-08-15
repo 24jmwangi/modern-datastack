@@ -1,0 +1,22 @@
+type: dbt
+profile: bigquery
+target: dev
+
+outputs:
+  dev:
+    type: bigquery
+    project: your-gcp-project-id
+    dataset: your_dataset_name
+    threads: 1
+    keyfile: path/to/your/service-account-key.json
+    timeout_seconds: 300
+    priority: interactive
+
+  prod:
+    type: bigquery
+    project: your-gcp-project-id
+    dataset: your_dataset_name
+    threads: 1
+    keyfile: path/to/your/service-account-key.json
+    timeout_seconds: 300
+    priority: batch

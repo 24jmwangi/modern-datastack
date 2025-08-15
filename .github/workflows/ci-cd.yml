@@ -1,0 +1,121 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # schedule:
+  #   - cron: "0 */5 * * *"
+
+# Global defaults
+env:
+  POSTGRES_HOST: 127.0.0.1
+  POSTGRES_PORT: 5432
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+
+    # Run Postgres as a job service so it's available during this job
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ${{ secrets.POSTGRES_USER }}"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Write GCP service account key & export env
+        run: |
+          echo '${{ secrets.GCP_SA_KEYS }}' > $HOME/gcp-key.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json" >> $GITHUB_ENV
+
+      - name: Wait for Postgres to be ready
+        run: |
+          for i in {1..30}; do
+            if docker run --rm --network host postgres:15 \
+              pg_isready -h $POSTGRES_HOST -p $POSTGRES_PORT -U ${{ secrets.POSTGRES_USER }}; then
+              echo "Postgres is ready"; break
+            fi
+            echo "Waiting for Postgres..."; sleep 2
+          done
+
+      - name: Run data ingestion (Python → Postgres → BigQuery)
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_HOST: ${{ env.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ env.POSTGRES_PORT }}
+        run: |
+          python scripts/ingest_google_sheets.py
+
+      - name: Install psql client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Run SQL analysis against Postgres
+        env:
+          PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          psql -h $POSTGRES_HOST -p $POSTGRES_PORT \
+            -U ${{ secrets.POSTGRES_USER }} \
+            -d ${{ secrets.POSTGRES_DB }} \
+            -f scripts/run_analysis.sql
+
+  terraform:
+    runs-on: ubuntu-latest
+    needs: etl
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Auth to GCP for Terraform
+        run: |
+          echo '${{ secrets.GCP_SA_KEYS }}' > $HOME/gcp-key.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json" >> $GITHUB_ENV
+
+      - name: Terraform Init/Apply
+        working-directory: terraform
+        run: |
+          terraform init -input=false
+          terraform apply -auto-approve
+          terraform output
+
+  # dbt_cloud:
+  #   runs-on: ubuntu-latest
+  #   needs: terraform
+  #   steps:
+  #     - name: Trigger dbt Cloud job
+  #       env:
+  #         DBT_CLOUD_API_KEY: ${{ secrets.DBT_CLOUD_API_KEY }}
+  #         DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
+  #         DBT_CLOUD_JOB_ID: ${{ secrets.DBT_CLOUD_JOB_ID }}
+  #       run: |
+  #         curl -s -X POST \
+  #           -H "Authorization: Token $DBT_CLOUD_API_KEY" \
+  #           -H "Content-Type: application/json" \
+  #           -d '{"cause":"Triggered by GitHub Actions"}' \
+  #           "https://cloud.getdbt.com/api/v2/accounts/$DBT_CLOUD_ACCOUNT_ID/jobs/$DBT_CLOUD_JOB_ID/run/"
