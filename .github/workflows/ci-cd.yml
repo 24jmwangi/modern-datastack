@@ -43,7 +43,10 @@ jobs:
           python-version: "3.9"
 
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: 
+            pip install --upgrade pip
+            pip install --upgrade numpy
+            pip install -r requirements.txt
 
       - name: Write GCP service account key & export env
         run: |
