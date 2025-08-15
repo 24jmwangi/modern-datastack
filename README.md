@@ -18,7 +18,6 @@ This project demonstrates an **end-to-end data pipeline** leveraging:
 - **Terraform** for infrastructure provisioning.
 - **GitHub Actions** for CI/CD 
 
----
 
 ### Incremental Loading
 The pipeline optimizes data transfer to BigQuery by **only loading new records** since the last successful load.
