@@ -63,7 +63,7 @@ print("data ingested successfully")
 ### INCREMENTAL LOADING
 def connect_to_bigquery():
     """Authenticates to BigQuery using a service account key file."""
-    credentials = service_account.Credentials.from_service_account_file(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+    credentials = "gcp-key.json"
     bq_client = bigquery.Client(credentials=credentials, project=credentials.project_id)
     print("connection to bq successful")
     return bq_client
