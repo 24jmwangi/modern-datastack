@@ -1,13 +1,13 @@
-## modern-datastack
+## Modern-Datastack
 Analytics engineering and dataops 
 
 ### Python + GitHub Actions + dbt Cloud + Terraform: Incremental Loading on BigQuery
 [![CI/CD Pipeline](https://github.com/24jmwangi/modern-datastack/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/24jmwangi/modern-datastack/actions/workflows/ci-cd.yml)
-[![Python](https://img.shields.io/badge/Python-3.x-blue)]()
-[![BigQuery](https://img.shields.io/badge/BigQuery-%F0%9F%9A%80-blue)]()
+[![Python](https://img.shields.io/badge/Python-3.9-blue)]()
+[![BigQuery](https://img.shields.io/badge/BigQuery-Datawarehouse-blue)]()
 [![dbt](https://img.shields.io/badge/dbt-Transformations-orange)]()
-[![Terraform](https://img.shields.io/badge/Terraform-Infrastructure-623CE4)]()
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Analysis-336791)]()
+[![Terraform](https://img.shields.io/badge/Terraform-IAC-623CE4)]()
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-OLTP-336791)]()
 
 ### Project Overview
 This project demonstrates an **end-to-end data pipeline** leveraging:
@@ -17,7 +17,7 @@ This project demonstrates an **end-to-end data pipeline** leveraging:
 - **dbt Cloud** for transformations, testing, and loading into the Gold dataset.
 - **Terraform** for infrastructure provisioning.
 - **GitHub Actions** for CI/CD 
-
+![Architecture](md.png)
 
 ### Incremental Loading
 The pipeline optimizes data transfer to BigQuery by **only loading new records** since the last successful load.
