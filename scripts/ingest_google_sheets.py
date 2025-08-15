@@ -19,7 +19,7 @@ def download_data(_sh):
     ticker_ws = _sh.worksheet("ticker")
     ticker_df = pd.DataFrame(ticker_ws.get_all_records())
     # Standardize column names
-    ticker_df.columns = [c.lower().replace(" ", "_").replace("-", "_") for c in ticker_df.columns]
+    ticker_df.columns = [c.lower().replace(" ", "_").replace("-", "_").replace("/", "_") for c in ticker_df.columns]
     history_dfs = {}
     for ticker in list(ticker_df["ticker"]):
         try:
