@@ -26,7 +26,3 @@ variable "bigquery_dataset_gold" {
 variable "project_id" {
   type = string
 }
-
-variable "region" {
-  type = string
-}
