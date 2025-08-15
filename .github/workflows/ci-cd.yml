@@ -107,7 +107,9 @@ jobs:
         working-directory: terraform
         run: |
           terraform init -input=false
-          terraform apply -auto-approve
+          terraform apply -auto-approve \
+            -var="project_id=${{ secrets.GCP_PROJECT_ID }}" \
+            -var="region=${{ secrets.GCP_REGION }}"
           terraform output
 
   # dbt_cloud:
