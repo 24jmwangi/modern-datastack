@@ -96,9 +96,10 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Auth to GCP for Terraform    
+        env:
+          GOOGLE_APP_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
         run: |
-           echo "${{ secrets.GCP_SA_KEY }}" | tr -d '\n' > gcp-key.json
-           chmod 600 gcp-key.json
+          echo "$GOOGLE_APP_CREDENTIALS" > gcp-key.json
       
       - name: Set GOOGLE_APPLICATION_CREDENTIALS
         run: echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json" >> $GITHUB_ENV
