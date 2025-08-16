@@ -1,9 +1,9 @@
-name: 'dbt'
+name: 'stocks'
 version: '1.0'
 profile: 'default'
 
 models:
-  dbt:
+  stocks:
     staging:
       +materialized: view
       +schema: silver
