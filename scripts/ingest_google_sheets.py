@@ -51,11 +51,11 @@ PG_PORT = os.getenv("POSTGRES_PORT")
 connection_str = f"postgresql+psycopg2://{PG_USER}:{PG_PASS}@{PG_HOST}:{PG_PORT}/{PG_DB}"
 engine = create_engine(connection_str)
 
-df1.to_sql("tickers", engine, if_exists="replace", index=False)
+df1.to_sql("ticker", engine, if_exists="replace", index=False)
 
 for table_name, df in df2.items():
     df.to_sql(table_name, engine, index=False, if_exists="replace")  
-    print(f" ingested {table_name} into PostgreSQL")
+    print(f" ingested {table_name}, columns: {df.columns} into PostgreSQL")
 
 print("data ingested successfully")
 
