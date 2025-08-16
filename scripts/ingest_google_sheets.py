@@ -53,7 +53,7 @@ engine = create_engine(connection_str)
 
 df1.to_sql("ticker", engine, if_exists="replace", index=False)
 
-for table_name df in df2.items():
+for table_name, df in df2.items():
     df.to_sql(table_name.lower(), engine, index=False, if_exists="replace")  
     print(f" ingested {table_name}, columns: {df.columns} into PostgreSQL")
 
