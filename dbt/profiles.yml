@@ -1,0 +1,8 @@
+target: PROD
+outputs:
+  PROD:
+    type: bigquery
+    method: oauth
+    project: alien-walker-451918-p8
+    dataset: alien_walker_451918_p8_silver
+    location: us-central1   # <-- make sure this matches your dataset location
