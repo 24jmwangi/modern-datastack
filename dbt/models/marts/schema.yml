@@ -24,7 +24,7 @@ models:
 sources:
   - name: silver
     database: alien-walker-451918-p8   # replace with your project
-    schema: alien_walker_451918_p8
+    schema: alien_walker_451918_p8_silver
     tables:
       - name: aapl
       - name: amzn
