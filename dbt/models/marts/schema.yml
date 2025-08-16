@@ -35,3 +35,5 @@ sources:
       - name: goog
       - name: nvda
       - name: ticker
+    config:
+      location: us-central1
