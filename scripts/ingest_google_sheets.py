@@ -53,8 +53,8 @@ engine = create_engine(connection_str)
 
 df1.to_sql("ticker", engine, if_exists="replace", index=False)
 
-for table_name, df in df2.items():
-    df.to_sql(table_name, engine, index=False, if_exists="replace")  
+for table_name df in df2.items():
+    df.to_sql(table_name.lower(), engine, index=False, if_exists="replace")  
     print(f" ingested {table_name}, columns: {df.columns} into PostgreSQL")
 
 print("data ingested successfully")
@@ -137,9 +137,15 @@ dataset_id = f"{fixed_project_id}_silver"
 
 # Define table names and their respective timestamp columns
 tables_to_load = {
-    "tickers": "last_trade_time",
-    "AAPL": "date",
-    "GOOG": "date"
+    "ticker": "last_trade_time",
+    "aapl": "date",
+    "amzn": "date",
+    "snow": "date",
+    "tsla": "date",
+    "meta": "date",
+    "msft": "date",
+    "goog": "date",
+    "nvda": 'date'
     # Add all other tables from your GSheets
 }
 
