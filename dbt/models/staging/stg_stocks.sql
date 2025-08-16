@@ -8,7 +8,7 @@ with all_stocks as (
     union all
     select 'tsla', * from {{ source('silver','tsla') }}
     union all
-    select 'meta', * from {{ source('silver','emta') }}
+    select 'meta', * from {{ source('silver','meta') }}
     union all
     select 'msft', * from {{ source('silver','msft') }}
     union all
