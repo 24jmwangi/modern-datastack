@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: fct_stock_prices
+    description: "Daily OHLCV stock data"
+    columns:
+      - name: ticker
+        tests: [not_null]
+      - name: trade_date
+        tests: [not_null]
+      - name: ticker_trade_date
+        tests: [unique]
+      - name: close_price
+        tests: [not_null]
+
+  - name: dim_tickers
+    description: "Ticker metadata with last trade info"
+    columns:
+      - name: ticker
+        tests: [unique, not_null]
+      - name: last_price
+        tests: [not_null]
+
+sources:
+  - name: silver
+    database: alien-walker-451918-p8   # replace with your project
+    schema: alien-walker-451918-p8
+    tables:
+      - name: aapl
+      - name: amzn
+      - name: snow
+      - name: tsla
+      - name: meta
+      - name: msft
+      - name: goog
+      - name: nvda
+      - name: ticker

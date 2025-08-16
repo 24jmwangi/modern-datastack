@@ -1,27 +1,17 @@
-name: my_data_pipeline_project
-version: 1.0.0
-profile: default
-
-source-paths: ["models"]
-analysis-paths: ["analysis"]
-target-path: "target"
-clean-targets:
-  - "target"
+name: 'dbt'
+version: '1.0'
+profile: 'default'
 
 models:
-  my_data_pipeline_project:
-    materialized: view
-
-seeds:
-  my_data_pipeline_project:
-    materialized: table
-
-snapshots:
-  my_data_pipeline_project:
-    target: snapshot
-
-tests:
-  my_data_pipeline_project:
-    target: test
-
-# Additional configurations can be added as needed.
+  dbt:
+    staging:
+      +materialized: view
+      +schema: silver
+      +tags: ['staging']
+    marts:
+      core:
+        +materialized: incremental
+        +schema: gold   # make marts incremental
+        +incremental_strategy: merge
+        +on_schema_change: sync_all_columns
+        +tags: ['gold']
