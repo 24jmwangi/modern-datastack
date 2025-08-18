@@ -20,7 +20,7 @@ with all_stocks as (
 
 select distinct      -- remove accidental duplicates
     ticker,
-    cast(date as date) as trade_date,
+    cast(parse_timestamp('%m/%d/%Y %H:%M:%S', date) as date) as trade_date,
     safe_cast(open as float64) as open_price,
     safe_cast(high as float64) as high_price,
     safe_cast(low as float64) as low_price,
