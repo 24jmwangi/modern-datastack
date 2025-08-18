@@ -133,7 +133,7 @@ bq_client = connect_to_bigquery()
 # Get the BigQuery dataset ID from the client's project
 project_id = bq_client.project
 fixed_project_id = project_id.replace('-', '_')
-dataset_id = f"{fixed_project_id}_silver"
+dataset_id = f"{fixed_project_id}_silver2"
 
 # Define table names and their respective timestamp columns
 tables_to_load = {

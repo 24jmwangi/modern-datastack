@@ -3,13 +3,13 @@ provider "google" {
   region      = var.region
 }
 
-resource "google_bigquery_dataset" "silver" {
-  dataset_id = "${replace(var.project_id, "-", "_")}_silver"
+resource "google_bigquery_dataset" "silver2" {
+  dataset_id = "${replace(var.project_id, "-", "_")}_silver2"
   location   = var.region
 }
 
-resource "google_bigquery_dataset" "gold" {
-  dataset_id = "${replace(var.project_id, "-", "_")}_gold"
+resource "google_bigquery_dataset" "gold2" {
+  dataset_id = "${replace(var.project_id, "-", "_")}_gold2"
   location   = var.region
 }
 

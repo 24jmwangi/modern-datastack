@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: silver
     database: alien-walker-451918-p8
-    schema: alien_walker_451918_p8_silver
+    schema: alien_walker_451918_p8_silver2
     tables:
       - name: aapl
       - name: amzn
