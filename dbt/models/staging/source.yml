@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: silver
+    database: alien-walker-451918-p8
+    schema: alien_walker_451918_p8_silver
+    tables:
+      - name: aapl
+      - name: amzn
+      - name: snow
+      - name: tsla
+      - name: meta
+      - name: msft
+      - name: goog
+      - name: nvda
+      - name: ticker
