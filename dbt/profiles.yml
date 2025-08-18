@@ -1,6 +1,6 @@
-target: PROD
+target: dev
 outputs:
-  PROD:
+  dev:
     type: bigquery
     method: oauth
     project: alien-walker-451918-p8
