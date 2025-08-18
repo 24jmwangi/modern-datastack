@@ -21,19 +21,19 @@ models:
       - name: last_price
         tests: [not_null]
 
-sources:
-  - name: silver
-    database: alien-walker-451918-p8   # replace with your project
-    schema: alien_walker_451918_p8_silver
-    tables:
-      - name: aapl
-      - name: amzn
-      - name: snow
-      - name: tsla
-      - name: meta
-      - name: msft
-      - name: goog
-      - name: nvda
-      - name: ticker
-    config:
-      location: us-central1
+# sources:
+#   - name: silver
+#     database: alien-walker-451918-p8   # replace with your project
+#     schema: alien_walker_451918_p8_silver
+#     tables:
+#       - name: aapl
+#       - name: amzn
+#       - name: snow
+#       - name: tsla
+#       - name: meta
+#       - name: msft
+#       - name: goog
+#       - name: nvda
+#       - name: ticker
+#     config:
+#       location: us-central1
