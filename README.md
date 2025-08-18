@@ -51,5 +51,6 @@ Why?
 
 
 ### dbt Transformations & Testing
+![Architecture](dbtcloud.png)
 
 
